@@ -1,53 +1,81 @@
-import { Instagram, Facebook, MessageCircle } from "lucide-react";
+import React from 'react';
+import { Instagram, Facebook, Twitter } from 'lucide-react';
 
-export default function Footer() {
+const Footer: React.FC = () => {
+  const footerLinks = {
+    Shop: ['All Products', 'New Arrivals', 'Best Sellers', 'Sale'],
+    About: ['Our Story', 'Sustainability', 'Blog', 'Press'],
+    Help: ['Shipping', 'Returns', 'FAQ', 'Contact'],
+    Legal: ['Privacy Policy', 'Terms of Service', 'Cookie Policy']
+  };
+
   return (
-    <footer className="bg-[#FAF8F4] py-10 px-6 md:px-16">
-      {/* Heading */}
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold text-gray-900">PureBrush</h2>
-      </div>
+    <footer className="bg-[#FFFBF2] pt-16 pb-8">
+      <div className="container mx-auto px-4">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+          {/* Newsletter Section */}
+          <div className="lg:col-span-2">
+            <h3 className="text-xl font-light text-gray-900 mb-4">
+              Join our newsletter
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Subscribe to get special offers, free giveaways, and updates.
+            </p>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-gray-900"
+              />
+              <button className="px-6 py-2 bg-[#1E293B] text-white rounded hover:bg-[#334155] transition-colors">
+                Subscribe
+              </button>
+            </div>
+          </div>
 
-      {/* Full Screen Navigation Links */}
-      <div className="hidden md:flex justify-center space-x-6 mt-4 text-gray-700">
-        <a href="#" className="hover:text-gray-900">Categories</a>
-        <a href="#" className="hover:text-gray-900">Benefits</a>
-        <a href="#" className="hover:text-gray-900">Best Sellers</a>
-        <a href="#" className="hover:text-gray-900">About Us</a>
-      </div>
-
-      {/* 📱 Mobile View: 2x2 Buttons Grid */}
-      <div className="grid grid-cols-2 gap-2 md:hidden mt-6 text-center">
-      <a href="#" className="hover:text-gray-900">Categories</a>
-        <a href="#" className="hover:text-gray-900">Benefits</a>
-        <a href="#" className="hover:text-gray-900">Best Sellers</a>
-        <a href="#" className="hover:text-gray-900">About Us</a>
-      </div>
-
-      {/* 📏 Spacebar for Separation */}
-    
-
-      {/* Subscription Box (Full & Mobile) */}
-      <div className="flex flex-col md:flex-row justify-between items-center mt-8">
-        {/* Left Side - Subscription */}
-        <div className="flex space-x-4 w-full md:w-auto">
-          <input 
-            type="email" 
-            placeholder="Enter your email" 
-            className="border px-4 py-2 w-full md:w-64 outline-none"
-          />
-          <button className="bg-green-900 text-white px-6 py-2 hover:bg-green-800">
-            Subscribe
-          </button>
+          {/* Links Sections */}
+          {Object.entries(footerLinks).map(([title, links]) => (
+            <div key={title}>
+              <h3 className="text-gray-900 font-medium mb-4">{title}</h3>
+              <ul className="space-y-2">
+                {links.map((link) => (
+                  <li key={link}>
+                    <a
+                      href={`/${link.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      {link}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        {/* Right Side - Social Icons */}
-        <div className="flex justify-center md:justify-end space-x-4 mt-6 md:mt-0">
-          <a href="#"><Instagram size={24} className="text-gray-700 hover:text-gray-900" /></a>
-          <a href="#"><MessageCircle size={24} className="text-gray-700 hover:text-gray-900" /></a>
-          <a href="#"><Facebook size={24} className="text-gray-700 hover:text-gray-900" /></a>
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-200 pt-8 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="text-gray-600 text-sm mb-4 md:mb-0">
+              © 2024 PURE. All rights reserved.
+            </div>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                <Twitter className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -1,6 +1,17 @@
+import React from 'react';
+import { Truck, Leaf, Heart, RefreshCw, Shield, Gift } from 'lucide-react';
 import section from "../assets/16.png";
 
-export default function Section() {
+const Hero: React.FC = () => {
+  const features = [
+    { icon: <Truck />, text: 'Free Shipping' },
+    { icon: <Leaf />, text: 'Eco-Friendly' },
+    { icon: <Heart />, text: 'Cruelty Free' },
+    { icon: <RefreshCw />, text: 'Easy Returns' },
+    { icon: <Shield />, text: 'Secure Payment' },
+    { icon: <Gift />, text: 'Gift Cards' }
+  ];
+
   return (
     <section className="w-full h-screen relative flex flex-col">
       {/* Full-Screen Image (Desktop) */}
@@ -41,4 +52,6 @@ export default function Section() {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;
